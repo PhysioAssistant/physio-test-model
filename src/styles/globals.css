@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/* ============================================================
+   PHYSIO AI EVALUATION STUDIO — GLOBAL DESIGN TOKENS
+   (Tailwind v4 CSS-first configuration)
+   ============================================================ */
+
+@theme {
+  /* ── Fonts ── */
+  --font-sans: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Brand Palette ── */
+  --color-brand-50:  #eefdf8;
+  --color-brand-100: #d6faf0;
+  --color-brand-200: #aff4e1;
+  --color-brand-300: #79e9ce;
+  --color-brand-400: #3dd5b5;
+  --color-brand-500: #18b99c;  /* Primary teal */
+  --color-brand-600: #0f9481;
+  --color-brand-700: #117669;
+  --color-brand-800: #135e55;
+  --color-brand-900: #144d46;
+  --color-brand-950: #062d2a;
+
+  /* ── Clinical Mode Accent (calm indigo) ── */
+  --color-clinical-50:  #eef2ff;
+  --color-clinical-100: #e0e7ff;
+  --color-clinical-200: #c7d2fe;
+  --color-clinical-300: #a5b4fc;
+  --color-clinical-400: #818cf8;
+  --color-clinical-500: #6366f1;
+  --color-clinical-600: #4f46e5;
+  --color-clinical-700: #4338ca;
+  --color-clinical-800: #3730a3;
+  --color-clinical-900: #312e81;
+
+  /* ── AI Lab Mode Accent (amber/orange) ── */
+  --color-lab-50:  #fffbeb;
+  --color-lab-100: #fef3c7;
+  --color-lab-200: #fde68a;
+  --color-lab-300: #fcd34d;
+  --color-lab-400: #fbbf24;
+  --color-lab-500: #f59e0b;
+  --color-lab-600: #d97706;
+  --color-lab-700: #b45309;
+  --color-lab-800: #92400e;
+  --color-lab-900: #78350f;
+
+  /* ── Semantic Colours ── */
+  --color-success-light: #f0fdf4;
+  --color-success:       #22c55e;
+  --color-success-dark:  #15803d;
+
+  --color-warning-light: #fffbeb;
+  --color-warning:       #f59e0b;
+  --color-warning-dark:  #b45309;
+
+  --color-danger-light:  #fef2f2;
+  --color-danger:        #ef4444;
+  --color-danger-dark:   #b91c1c;
+
+  --color-info-light:    #eff6ff;
+  --color-info:          #3b82f6;
+  --color-info-dark:     #1d4ed8;
+
+  /* ── Surface & Neutral ── */
+  --color-surface-0:     #ffffff;
+  --color-surface-1:     #f8fafc;
+  --color-surface-2:     #f1f5f9;
+  --color-surface-3:     #e2e8f0;
+
+  /* ── Spacing Scale ── */
+  --spacing-px:   1px;
+  --spacing-0:    0px;
+  --spacing-1:    0.25rem;
+  --spacing-2:    0.5rem;
+  --spacing-3:    0.75rem;
+  --spacing-4:    1rem;
+  --spacing-5:    1.25rem;
+  --spacing-6:    1.5rem;
+  --spacing-8:    2rem;
+  --spacing-10:   2.5rem;
+  --spacing-12:   3rem;
+  --spacing-16:   4rem;
+  --spacing-20:   5rem;
+  --spacing-24:   6rem;
+
+  /* ── Border Radius ── */
+  --radius-sm:   0.25rem;
+  --radius-md:   0.5rem;
+  --radius-lg:   0.75rem;
+  --radius-xl:   1rem;
+  --radius-2xl:  1.5rem;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-xs:  0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sm:  0 1px 3px 0 rgb(0 0 0 / 0.10), 0 1px 2px -1px rgb(0 0 0 / 0.10);
+  --shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.10), 0 2px 4px -2px rgb(0 0 0 / 0.10);
+  --shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.10), 0 4px 6px -4px rgb(0 0 0 / 0.10);
+  --shadow-xl:  0 20px 25px -5px rgb(0 0 0 / 0.10), 0 8px 10px -6px rgb(0 0 0 / 0.10);
+  --shadow-glow-brand: 0 0 0 3px rgb(24 185 156 / 0.2);
+  --shadow-glow-clinical: 0 0 0 3px rgb(99 102 241 / 0.2);
+
+  /* ── Transitions ── */
+  --transition-fast:   150ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow:   350ms ease;
+}
+
+/* ============================================================
+   BASE RESET & GLOBAL STYLES
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-surface-1);
+  color: var(--color-slate-900, #0f172a);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus rings ── */
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ── Text selection ── */
+::selection {
+  background-color: var(--color-brand-200);
+  color: var(--color-brand-900);
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.font-display  { font-family: var(--font-display); }
+.font-mono     { font-family: var(--font-mono); }
+
+/* Smooth page-level transitions */
+.page-enter {
+  animation: fadeSlideIn 0.25s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Pulse for recording indicator */
+@keyframes pulse-ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(239 68 68 / 0.4); }
+  50%       { box-shadow: 0 0 0 8px rgb(239 68 68 / 0); }
+}
+
+.recording-pulse {
+  animation: pulse-ring 1.2s ease infinite;
+}
